@@ -9,14 +9,14 @@ datasource db {
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
 model crypto_data {
-  Name      String?
-  Symbol    String?
-  Date      DateTime? @db.Timestamptz(6)
-  High      Float?
-  Low       Float?
-  Open      Float?
-  Close     Float?
-  Volume    String?
-  Marketcap Float?
+  Name      String
+  Symbol    String
+  Date      DateTime @db.Timestamptz(6)
+  High      Float
+  Low       Float
+  Open      Float
+  Close     Float
+  Volume    String
+  Marketcap Float
   Id        BigInt    @id @default(autoincrement())
 }
