@@ -96,6 +96,7 @@ export default async function Home() {
 
         ProcessedData.push({
           Name: groupName,
+          Symbol: july6Data.Symbol,
           Price: `$${averagePriceJuly6.toFixed(2)}`,
           Difference24h: `${priceDifference24h}%`,
           Difference7Days: `${priceDifference7Days}%`,
@@ -116,7 +117,14 @@ export default async function Home() {
       }
     }
   }
-  console.log(ProcessedData);
+
+  const sortedData = [...ProcessedData].sort((a, b) => {
+    const marketCapA = parseFloat(a.MarketCap.replace(/[$,]/g, ""));
+    const marketCapB = parseFloat(b.MarketCap.replace(/[$,]/g, ""));
+    return marketCapB - marketCapA;
+  });
+  
+  console.log(sortedData);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
