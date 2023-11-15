@@ -1,6 +1,10 @@
 import React from "react";
 
-const Table = () => {
+type TableProps = {
+  data: ProcessedData[];
+};
+
+const Table: React.FC<TableProps> = ({ data }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -15,7 +19,22 @@ const Table = () => {
             <th>Market Cap</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {data.map((item) => (
+            <tr key={item.Name} className="hover">
+              <td className="flex items-center justify-between">
+                <div className="text-sm">{item.Name}</div>
+                <div className="text-xs text-gray-500">{item.Symbol}</div>
+              </td>
+              <td>{item.Price}</td>
+              <td>{item.Difference24h}</td>
+              <td>{item.Difference7Days}</td>
+              <td>{item.DifferenceOneMonth}</td>
+              <td>{item.Volume24h}</td>
+              <td>{item.MarketCap}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

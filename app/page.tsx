@@ -8,11 +8,9 @@ export default async function Home() {
   const processedData = dataProcessing(data);
   const sortedData = sortDataByMarketCap(processedData);
 
-  console.log(sortedData);
-
   return (
     <main className="flex flex-col items-center justify-start">
-      <Table />
+      <Table data={sortedData} />
     </main>
   );
 }
