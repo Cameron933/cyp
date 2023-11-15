@@ -6,7 +6,7 @@ const { publicRuntimeConfig } = getConfig();
 
 async function getCrypto() {
   const res = await fetch(
-    `${publicRuntimeConfig.apiBaseUrl}/api/getCryptoData`
+    `${publicRuntimeConfig.apiBaseUrl}/api/getCryptoData`,
   );
   if (!res) {
     console.log(res);
@@ -35,7 +35,7 @@ export default async function Home() {
       groups[key].push(item);
       return groups;
     },
-    {}
+    {},
   );
 
   const ProcessedData = [];
@@ -123,7 +123,7 @@ export default async function Home() {
     const marketCapB = parseFloat(b.MarketCap.replace(/[$,]/g, ""));
     return marketCapB - marketCapA;
   });
-  
+
   console.log(sortedData);
 
   return (
@@ -131,7 +131,7 @@ export default async function Home() {
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <h1>currency</h1>
         <ul>
-          {formattedData.map((cur: any) => (
+          {sortedData.map((cur: any) => (
             <li key={cur.id}>{cur.name}</li>
           ))}
         </ul>
