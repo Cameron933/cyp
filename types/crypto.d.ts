@@ -20,4 +20,6 @@ type ProcessedData = {
   DifferenceOneMonth: string;
   Volume24h: string;
   MarketCap: string;
+  No?: number;
+  Pic?: string;
 };
